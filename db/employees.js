@@ -12,3 +12,28 @@ const employees = [
 ];
 
 export default employees;
+
+export function getEmployees() {
+  return employees;
+}
+
+export function getEmployee(id) {
+  return employees.find((employee) => employee.id === id);
+}
+
+export function getRandomEmployee() {
+  const random = employees[Math.floor(Math.random() * employees.length)];
+  console.log(random);
+  return random;
+}
+
+export function createEmployee(nameValue) {
+  if (!nameValue || typeof nameValue !== "string" || nameValue === "") {
+    console.error("employee name is null")
+    return null;
+  }
+  const id = employees[employees.length - 1].id + 1;
+  const employee = { id: id, name: nameValue };
+  employees.push(employee);
+  return employee;
+}
